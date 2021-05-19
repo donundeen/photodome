@@ -49,16 +49,21 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  Serial.println("loop");
   rval = analogRead(rpin);
-  Serial.println(rval);
   float rmult = rval / maxval;
-  Serial.println(rmult);
   int rcol = rmult * 255;
-  Serial.println(rcol);
+  gval = analogRead(gpin);
+  float gmult = gval / maxval;
+  int gcol = gmult * 255;
+  bval = analogRead(bpin);
+  float bmult = bval / maxval;
+  int bcol = bmult * 255;
+  wval = analogRead(wpin);
+  float wmult = wval / maxval;
+  int wcol = wmult * 255;
   
-//  uint32_t color = strip.Color(rcol, rcol, rcol, rcol);
-  uint32_t color = strip.Color(0, 0, 0, rcol);
+  uint32_t color = strip.Color(rcol, gcol, bcol, wcol);
+ // uint32_t color = strip.Color(0, 0, 0, rcol);
   strip.fill(color, 0, LED_COUNT);
   strip.show();
  /*     
