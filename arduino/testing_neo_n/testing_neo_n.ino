@@ -9,7 +9,7 @@
 
 
 // Declare our NeoPixel strip object:
-Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_RGBW + NEO_KHZ800);
+Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRBW + NEO_KHZ800);
 // Argument 1 = Number of pixels in NeoPixel strip
 // Argument 2 = Arduino pin number (most are valid)
 // Argument 3 = Pixel type flags, add together as needed:
@@ -33,7 +33,7 @@ int wval = 0;
 int minval = 0;
 float maxval = 1023.0;
 
-int brightness = 50 ;
+int brightness = 255 ;
 
 float maxColorVal = 255.0;
 
@@ -61,7 +61,21 @@ void loop() {
   wval = analogRead(wpin);
   float wmult = wval / maxval;
   int wcol = wmult * 255;
+
+  //Serial.print("r " );
+  //Serial.println(rval);
+
   
+  //Serial.print("g " );
+  //Serial.println(gval);
+  
+  //Serial.print("b " );
+  //Serial.println(bval);
+  //Serial.print("w " );
+  //Serial.println(wval);
+  
+
+    
   uint32_t color = strip.Color(rcol, gcol, bcol, wcol);
  // uint32_t color = strip.Color(0, 0, 0, rcol);
   strip.fill(color, 0, LED_COUNT);
